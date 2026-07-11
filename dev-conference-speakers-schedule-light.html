@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DevSummit 2026 — Speakers &amp; Schedule (Light)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --bg:            #FFFFFF;
+    --surface:       #F7F8FA;
+    --surface-2:     #EFF1F5;
+    --surface-line:  #E2E5EB;
+    --blue:          #2563EB;
+    --amber:         #B5750F;
+    --text:          #12161F;
+    --muted:         #6B7280;
+    --font-display:  'Space Grotesk', sans-serif;
+    --font-body:     'Inter', sans-serif;
+    --font-mono:     'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{ background:#EDEFF3; display:flex; justify-content:center; padding:40px 0; }
+
+  .section{
+    width:1551px;
+    background:
+      radial-gradient(650px 380px at 90% 0%, rgba(37,99,235,0.06), transparent 60%),
+      var(--bg);
+    border:1px solid var(--surface-line);
+    border-radius:20px;
+    padding:88px 96px 96px;
+    font-family:var(--font-body);
+    color:var(--text);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(20,25,40,0.06);
+  }
+
+  .section::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(20,25,40,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,25,40,0.03) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image: radial-gradient(1000px 500px at 85% 0%, black, transparent 75%);
+    pointer-events:none;
+  }
+
+  /* ---------- HEADER ---------- */
+  .section-header{ position:relative; margin-bottom:64px; max-width:760px; }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--amber);
+    background:rgba(181,117,15,0.08);
+    border:1px solid rgba(181,117,15,0.25);
+    padding:6px 14px;
+    border-radius:100px;
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:var(--amber); box-shadow:0 0 0 3px rgba(181,117,15,0.15); }
+
+  .section-title{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:42px;
+    letter-spacing:-0.01em;
+    margin-bottom:14px;
+  }
+  .section-title .accent{ color:var(--blue); }
+
+  .section-sub{ font-size:16px; line-height:1.7; color:var(--muted); }
+
+  /* ---------- SPEAKERS GRID ---------- */
+  .speakers-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+    margin-bottom:80px;
+  }
+
+  .speaker-card{
+    background:var(--surface);
+    border:1px solid var(--surface-line);
+    border-radius:14px;
+    padding:26px 24px 24px;
+    transition:transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .speaker-card:hover{ transform:translateY(-4px); border-color:#C9CEDA; box-shadow:0 12px 30px rgba(20,25,40,0.08); }
+
+  .avatar{
+    width:56px; height:56px;
+    border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:18px;
+    color:#fff;
+    margin-bottom:18px;
+  }
+  .av-1{ background:linear-gradient(135deg,#2563EB,#5B8CFF); }
+  .av-2{ background:linear-gradient(135deg,#F5A623,#FFC862); color:#1a1400; }
+  .av-3{ background:linear-gradient(135deg,#22C08A,#5EE8B5); color:#04160f; }
+  .av-4{ background:linear-gradient(135deg,#7C6CF6,#B39CFF); }
+
+  .speaker-name{ font-family:var(--font-display); font-weight:600; font-size:17px; margin-bottom:3px; color:var(--text); }
+  .speaker-role{ font-size:13px; color:var(--muted); margin-bottom:16px; }
+
+  .speaker-talk{
+    font-size:14px;
+    color:#3A4150;
+    line-height:1.5;
+    margin-bottom:18px;
+    min-height:42px;
+  }
+
+  .track-tag{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--blue);
+    background:rgba(37,99,235,0.08);
+    padding:3px 9px;
+    border-radius:6px;
+    margin-bottom:18px;
+  }
+
+  .btn{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:13.5px;
+    padding:10px 18px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background:#2563EB;
+    color:#FFFFFF;
+  }
+  .btn-primary:hover{ background:#1D4FD1; transform:translateY(-1px); box-shadow:0 6px 16px rgba(37,99,235,0.28); }
+  .btn-primary:focus-visible{ outline:3px solid #93B4FF; outline-offset:2px; }
+  .btn-block{ width:100%; justify-content:center; }
+
+  /* ---------- SCHEDULE ---------- */
+  .schedule-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-bottom:28px;
+  }
+  .schedule-title{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:26px;
+    color:var(--text);
+  }
+
+  /* CSS-only tabs via radio hack */
+  .tabs{ position:relative; }
+  .tabs input[type="radio"]{ display:none; }
+
+  .tab-labels{
+    display:inline-flex;
+    gap:6px;
+    background:var(--surface-2);
+    border:1px solid var(--surface-line);
+    padding:5px;
+    border-radius:10px;
+  }
+  .tab-labels label{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--muted);
+    padding:9px 20px;
+    border-radius:7px;
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease;
+    user-select:none;
+  }
+
+  #day1:checked ~ .tab-labels label[for="day1"],
+  #day2:checked ~ .tab-labels label[for="day2"],
+  #day3:checked ~ .tab-labels label[for="day3"]{
+    background:var(--blue);
+    color:#fff;
+  }
+
+  .panels{ position:relative; margin-top:32px; }
+  .panel{ display:none; }
+  #day1:checked ~ .panels #panel-1,
+  #day2:checked ~ .panels #panel-2,
+  #day3:checked ~ .panels #panel-3{ display:block; }
+
+  .timeline{ display:flex; flex-direction:column; }
+
+  .agenda-item{
+    display:grid;
+    grid-template-columns:110px 1fr auto auto;
+    align-items:center;
+    gap:24px;
+    padding:20px 24px;
+    background:var(--surface);
+    border:1px solid var(--surface-line);
+    border-radius:12px;
+    margin-bottom:14px;
+  }
+  .agenda-item.keynote{ border-color:rgba(37,99,235,0.35); background:linear-gradient(180deg, rgba(37,99,235,0.06), var(--surface)); }
+
+  .agenda-time{ font-family:var(--font-mono); font-size:13px; color:var(--amber); }
+  .agenda-main .agenda-name{ font-family:var(--font-display); font-weight:600; font-size:16px; margin-bottom:4px; color:var(--text); }
+  .agenda-main .agenda-speaker{ font-size:13px; color:var(--muted); }
+  .agenda-track-tag{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--muted);
+    border:1px solid var(--surface-line);
+    padding:5px 11px;
+    border-radius:100px;
+    white-space:nowrap;
+    background:#fff;
+  }
+</style>
+</head>
+<body>
+
+<section class="section">
+
+  <div class="section-header">
+    <div class="eyebrow"><span class="dot"></span> WHO'S ON STAGE</div>
+    <h2 class="section-title">Speakers &amp; <span class="accent">schedule.</span></h2>
+    <p class="section-sub">
+      120+ engineers, maintainers, and founders from teams shipping at scale —
+      three days of talks organized by track, so you can build your own agenda.
+    </p>
+  </div>
+
+  <!-- SPEAKERS -->
+  <div class="speakers-grid">
+
+    <div class="speaker-card">
+      <div class="avatar av-1">RM</div>
+      <div class="speaker-name">Rina Matsuda</div>
+      <div class="speaker-role">Staff Engineer, Vercel</div>
+      <span class="track-tag">FRONTEND</span>
+      <div class="speaker-talk">The Next Runtime: rethinking server rendering at the edge</div>
+      <a href="#" class="btn btn-primary btn-block">View Talk</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="avatar av-2">DK</div>
+      <div class="speaker-name">Daniel Kwarteng</div>
+      <div class="speaker-role">Founding Eng, Neon</div>
+      <span class="track-tag">DATA</span>
+      <div class="speaker-talk">Scaling Postgres past a billion rows without losing sleep</div>
+      <a href="#" class="btn btn-primary btn-block">View Talk</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="avatar av-3">AS</div>
+      <div class="speaker-name">Ana Souza</div>
+      <div class="speaker-role">ML Lead, Cohere</div>
+      <span class="track-tag">AI</span>
+      <div class="speaker-talk">Building agents that actually finish the task</div>
+      <a href="#" class="btn btn-primary btn-block">View Talk</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="avatar av-4">JL</div>
+      <div class="speaker-name">Jonas Lindqvist</div>
+      <div class="speaker-role">Principal SRE, Cloudflare</div>
+      <span class="track-tag">CLOUD</span>
+      <div class="speaker-talk">Zero-downtime deploys for 10M requests/sec</div>
+      <a href="#" class="btn btn-primary btn-block">View Talk</a>
+    </div>
+
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="tabs">
+    <input type="radio" name="day" id="day1" checked>
+    <input type="radio" name="day" id="day2">
+    <input type="radio" name="day" id="day3">
+
+    <div class="schedule-head">
+      <div class="schedule-title">Full agenda</div>
+      <div class="tab-labels">
+        <label for="day1">Day 1 · Oct 14</label>
+        <label for="day2">Day 2 · Oct 15</label>
+        <label for="day3">Day 3 · Oct 16</label>
+      </div>
+    </div>
+
+    <div class="panels">
+
+      <div class="panel" id="panel-1">
+        <div class="timeline">
+          <div class="agenda-item keynote">
+            <span class="agenda-time">09:00</span>
+            <div class="agenda-main">
+              <div class="agenda-name">Opening Keynote — Build What's Next</div>
+              <div class="agenda-speaker">Rina Matsuda · Main Stage</div>
+            </div>
+            <span class="agenda-track-tag">KEYNOTE</span>
+            <a href="#" class="btn btn-primary">Add to Calendar</a>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-time">11:00</span>
+            <div class="agenda-main">
+              <div class="agenda-name">Scaling Postgres to 1B Rows</div>
+              <div class="agenda-speaker">Daniel Kwarteng · Room A</div>
+            </div>
+            <span class="agenda-track-tag">DATA</span>
+            <a href="#" class="btn btn-primary">Add to Calendar</a>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-time">14:00</span>
+            <div class="agenda-main">
+              <div class="agenda-name">Workshop: Building AI Agents</div>
+              <div class="agenda-speaker">Ana Souza · Workshop Hall</div>
+            </div>
+            <span class="agenda-track-tag">AI</span>
+            <a href="#" class="btn btn-primary">Add to Calendar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-2">
+        <div class="timeline">
+          <div class="agenda-item">
+            <span class="agenda-time">09:30</span>
+            <div class="agenda-main">
+              <div class="agenda-name">Zero-Downtime Deploys at Scale</div>
+              <div class="agenda-speaker">Jonas Lindqvist · Room A</div>
+            </div>
+            <span class="agenda-track-tag">CLOUD</span>
+            <a href="#" class="btn btn-primary">Add to Calendar</a>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-time">12:00</span>
+            <div class="agenda-main">
+              <div class="agenda-name">Panel: The Future of Frontend Frameworks</div>
+              <div class="agenda-speaker">Rina Matsuda + guests · Main Stage</div>
+            </div>
+            <span class="agenda-track-tag">FRONTEND</span>
+            <a href="#" class="btn btn-primary">Add to Calendar</a>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-time">15:30</span>
+            <div class="agenda-main">
+              <div class="agenda-name">Lightning Talks: Community Track</div>
+              <div class="agenda-speaker">Various speakers · Room B</div>
+            </div>
+            <span class="agenda-track-tag">COMMUNITY</span>
+            <a href="#" class="btn btn-primary">Add to Calendar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-3">
+        <div class="timeline">
+          <div class="agenda-item">
+            <span class="agenda-time">10:00</span>
+            <div class="agenda-main">
+              <div class="agenda-name">Agents in Production: Lessons Learned</div>
+              <div class="agenda-speaker">Ana Souza · Room A</div>
+            </div>
+            <span class="agenda-track-tag">AI</span>
+            <a href="#" class="btn btn-primary">Add to Calendar</a>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-time">13:00</span>
+            <div class="agenda-main">
+              <div class="agenda-name">Closing Roundtable — What's Next for Devs</div>
+              <div class="agenda-speaker">All speakers · Main Stage</div>
+            </div>
+            <span class="agenda-track-tag">CLOSING</span>
+            <a href="#" class="btn btn-primary">Add to Calendar</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>
